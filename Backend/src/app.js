@@ -6,7 +6,7 @@ const app = express();
 
 app.use(cors(
     {
-        origin:"https://mern-todo-app-frontend-f60c.onrender.com",
+        origin:["https://mern-todo-app-frontend-f60c.onrender.com","http://localhost:5000"],
         credentials:true
     }
 ));
