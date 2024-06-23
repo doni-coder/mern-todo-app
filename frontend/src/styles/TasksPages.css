@@ -1,0 +1,25 @@
+.tasks-container-1{
+    width: 100%;
+}
+.tasks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.tasks-container-1 .link{
+    margin-left: 30%;
+    margin-top: 30px;
+}
+.tasks-container-1 .link a{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+@media (max-width:600px) {
+    .tasks-container-1 .link{
+        margin-left: 10%;
+    }
+}

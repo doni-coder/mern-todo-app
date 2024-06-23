@@ -1,0 +1,60 @@
+.task-container{
+    width: 250px;
+    background-color: rgb(255, 255, 255);
+    border: solid 1px rgb(179, 179, 179);
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0px 0px 5px rgba(158, 158, 158, 0.692);
+    text-decoration: none
+}
+.task-container hr{
+    border: solid rgba(192, 192, 192, 0.808) 1px;
+}
+.task-container h4,
+.task-container hr,
+.task-container p {
+    text-decoration: none;
+}
+a .task-container h4,
+a .task-container hr,
+a .task-container p {
+    text-decoration: none;
+}
+a {
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent */
+}
+.title-block{
+    padding: 10px;
+}
+.title-block h4{
+    font-family: "Poppins", sans-serif;
+}
+.description-block{
+    padding: 10px;
+}
+.description-block p{
+    font-family: "Poppins", sans-serif;
+    color: rgb(78, 78, 78);
+    font-size: 14px;
+}
+.completed{
+    background-color: rgb(0, 164, 0);
+    color: white;
+}
+.notCompleted{
+    background-color: rgb(255, 162, 0);
+    color: white;
+}
+.task-container .badges{
+    padding: 2px 5px;
+    position: absolute;
+    right: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    border-radius: 7px;
+    top: 5px;
+}
+.task-container:hover{
+    background-image: linear-gradient(rgba(145, 145, 145, 0.646) ,rgb(239, 239, 239) );
+}
