@@ -16,7 +16,6 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setError(null);
     try {
       const response = await axios.post(`/api/v1/users/login`, formData);
       setIsLoggedIn(true);
