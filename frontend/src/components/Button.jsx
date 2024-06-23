@@ -4,9 +4,9 @@ axios.defaults.withCredentials = true;
 import { useTodoContext } from "../context/ContextProvider";
 
 function Button() {
-  const { setIsLoggedIn,setTaskCount,apiUrl } = useTodoContext();
+  const { setIsLoggedIn,setTaskCount } = useTodoContext();
     const handleLogout = async ()=>{
-        const response = await axios.post(`${apiUrl}/api/v1/users/logout`)
+        const response = await axios.post(`/api/v1/users/logout`)
         console.log("user loggedout");
         setIsLoggedIn(false)
         setTaskCount(0)

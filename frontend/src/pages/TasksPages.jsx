@@ -8,14 +8,14 @@ import Spinner from "../components/Spinner";
 axios.defaults.withCredentials = true;
 
 function TasksPages() {
-  const { tasks, setTasks, isLoading, setIsLoading, isLoggedIn , apiUrl } =
+  const { tasks, setTasks, isLoading, setIsLoading, isLoggedIn  } =
     useTodoContext();
   useEffect(() => {
     const getResponse = async () => {
       try {
         setIsLoading(true);
         const response = await axios.post(
-          `${apiUrl}/api/v1/users/todos`
+          `/api/v1/users/todos`
         );
         const data = response.data;
         setTasks(data.data.todos || []);

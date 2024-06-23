@@ -10,7 +10,7 @@ function AddTasks() {
     description: "",
   });
 
-  const { tasks, setTasks, isLoggedIn,apiUrl } = useTodoContext();
+  const { tasks, setTasks, isLoggedIn } = useTodoContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ function AddTasks() {
         alert("please enter some value");
       } else {
         const response = await axios.post(
-          `${apiUrl}/api/v1/todos/newTodo`,
+          `/api/v1/todos/newTodo`,
           formData
         );
         setTasks([...tasks, response.data.data]);

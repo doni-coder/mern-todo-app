@@ -11,12 +11,12 @@ const ContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   
-  const apiUrl = "http://localhost:5000";
+  // const apiUrl = "http://localhost:3000";
 
   useEffect(() => {
     const getLoggedInStatus = async () => {
       try {
-        const response = await axios.post(`${apiUrl}/api/v1/users/status`);
+        const response = await axios.post(`/api/v1/users/status`);
         console.log(response.data);
         const data = response.data;
         setIsLoggedIn(data.data.loggedIn);
@@ -40,7 +40,6 @@ const ContextProvider = ({ children }) => {
         setIsLoggedIn,
         isLoading,
         setIsLoading,
-        apiUrl,
       }}
     >
       {children}

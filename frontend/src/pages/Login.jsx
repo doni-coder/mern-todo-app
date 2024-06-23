@@ -6,7 +6,7 @@ import { useTodoContext } from "../context/ContextProvider";
 axios.defaults.withCredentials = true;
 
 function Login() {
-  const { setIsLoggedIn,apiUrl } = useTodoContext();
+  const { setIsLoggedIn } = useTodoContext();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -17,7 +17,7 @@ function Login() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${apiUrl}/api/v1/users/login`,
+        `/api/v1/users/login`,
         formData,
         {
           withCredentials: true,

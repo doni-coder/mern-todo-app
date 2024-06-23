@@ -6,7 +6,6 @@ import { useTodoContext } from "../context/ContextProvider";
 axios.defaults.withCredentials = true;
 
 function SignUp() {
-  const {apiUrl} = useTodoContext()
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
@@ -18,7 +17,7 @@ function SignUp() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${apiUrl}/api/v1/users/register`,
+        `/api/v1/users/register`,
         formData
       );
       alert("user registered successful");

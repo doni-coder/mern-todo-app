@@ -8,13 +8,13 @@ axios.defaults.withCredentials = true;
 
 function Navbar() {
   
-  const { isLoggedIn, tasks, tasksCount, setTaskCount,apiUrl } = useTodoContext();
+  const { isLoggedIn, tasks, tasksCount, setTaskCount } = useTodoContext();
 
   useEffect(() => {
     const setTodoCount = async () => {
       try {
         const response = await axios.post(
-          `${apiUrl}/api/v1/users/todos`
+          `/api/v1/users/todos`
         );
         const data = response.data.data.todos;
         setTaskCount(data.length);
