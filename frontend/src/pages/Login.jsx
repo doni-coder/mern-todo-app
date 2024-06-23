@@ -17,7 +17,8 @@ function Login() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post(`/api/v1/users/login`, formData);
+      const response = await axios.post("/api/v1/users/login", formData);
+      console.log(response.data);
       setIsLoggedIn(true);
       navigate("/");
     } catch (error) {
@@ -33,6 +34,7 @@ function Login() {
       [e.target.name]: e.target.value,
     });
   };
+
   return (
     <div className="login-body">
       <div className="login-container">

@@ -2,28 +2,25 @@ import React, { useState } from "react";
 import "../styles/SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useTodoContext } from "../context/ContextProvider";
 axios.defaults.withCredentials = true;
 
 function SignUp() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
-    email: " ",
+    email: "",
     password: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `/api/v1/users/register`,
-        formData
-      );
+      const response = await axios.post("/api/v1/users/register", formData);
+      console.log(response.data);
       alert("user registered successful");
-      navigate("/login")
+      navigate("/login");
     } catch (error) {
-      console.log(error);
+      console.log("Signup error : ",error);
     }
   };
 
@@ -33,6 +30,7 @@ function SignUp() {
       [e.target.name]: e.target.value,
     });
   };
+
   return (
     <div className="signup-body">
       <div className="signup-container">

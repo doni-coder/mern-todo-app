@@ -14,9 +14,9 @@ const ContextProvider = ({ children }) => {
   useEffect(() => {
     const getLoggedInStatus = async () => {
       try {
-        const response = await axios.post(`/api/v1/users/status`);
+        const response = await axios.post("/api/v1/users/status");
         const data = response.data;
-        console.log("is loggedin", data);
+        console.log("isloggedin", data);
         setIsLoggedIn(data.loggedIn);
         console.log("LoggedIn status:", data.loggedIn);
       } catch (error) {

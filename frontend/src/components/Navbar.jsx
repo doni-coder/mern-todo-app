@@ -14,7 +14,7 @@ function Navbar() {
     const setTodoCount = async () => {
       if (isLoggedIn) {
         try {
-          const response = await axios.post(`/api/v1/users/todos`);
+          const response = await axios.post("/api/v1/users/todos");
           const data = response.data.data.todos;
           setTaskCount(data.length);
         } catch (error) {

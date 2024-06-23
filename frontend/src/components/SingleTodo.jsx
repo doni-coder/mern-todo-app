@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../styles/SingleTodo.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { useTodoContext } from "../context/ContextProvider";
 axios.defaults.withCredentials = true;
 
 function SingleTodo() {
@@ -24,7 +23,7 @@ function SingleTodo() {
   };
 
   const { id } = useParams();
-  const url = `/api/v1/todos/getTodo`;
+  const url = "/api/v1/todos/getTodo";
 
   useEffect(() => {
     const getResponse = async () => {
@@ -39,7 +38,6 @@ function SingleTodo() {
         console.log(data.data);
       } catch (error) {
         console.error('Error fetching data:', error);
-        // Handle the error, e.g., set an error state
       }
     };
 

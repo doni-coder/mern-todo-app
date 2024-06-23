@@ -22,10 +22,7 @@ function AddTasks() {
       if (formData.title === "" && formData.description === "") {
         alert("please enter some value");
       } else {
-        const response = await axios.post(
-          `/api/v1/todos/newTodo`,
-          formData
-        );
+        const response = await axios.post("/api/v1/todos/newTodo", formData);
         setTasks([...tasks, response.data.data]);
         alert("task added");
       }

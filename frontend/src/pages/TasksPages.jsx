@@ -8,15 +8,13 @@ import Spinner from "../components/Spinner";
 axios.defaults.withCredentials = true;
 
 function TasksPages() {
-  const { tasks, setTasks, isLoading, setIsLoading, isLoggedIn  } =
+  const { tasks, setTasks, isLoading, setIsLoading, isLoggedIn } =
     useTodoContext();
   useEffect(() => {
     const getResponse = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.post(
-          `/api/v1/users/todos`
-        );
+        const response = await axios.post("/api/v1/users/todos");
         const data = response.data;
         console.log(data);
         setTasks(data.data.todos || []);
@@ -51,8 +49,10 @@ function TasksPages() {
       </div>
     </div>
   ) : (
-    <div style={{marginTop:"50px",textAlign:"center"}}>
-        <h3 style={{color:"white",fontFamily:"Poppins"}}>Login to view tasks</h3>
+    <div style={{ marginTop: "50px", textAlign: "center" }}>
+      <h3 style={{ color: "white", fontFamily: "Poppins" }}>
+        Login to view tasks
+      </h3>
     </div>
   );
 }
