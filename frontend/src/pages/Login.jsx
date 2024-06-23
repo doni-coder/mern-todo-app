@@ -21,7 +21,6 @@ function Login() {
       setIsLoggedIn(true);
       navigate("/");
     } catch (error) {
-      setError("Login failed. Please check your email and password.");
       console.log("Login error", error);
     } finally {
       setIsLoading(false);
