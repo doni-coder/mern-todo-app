@@ -15,18 +15,17 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError(null);
     try {
-      const response = await axios.post(
-        `/api/v1/users/login`,
-        formData,
-        {
-          withCredentials: true,
-        }
-      );
-      setIsLoggedIn(true)
+      const response = await axios.post(`/api/v1/users/login`, formData);
+      setIsLoggedIn(true);
       navigate("/");
     } catch (error) {
+      setError("Login failed. Please check your email and password.");
       console.log("Login error", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 

@@ -12,18 +12,18 @@ function Navbar() {
 
   useEffect(() => {
     const setTodoCount = async () => {
-      try {
-        const response = await axios.post(
-          `/api/v1/users/todos`
-        );
-        const data = response.data.data.todos;
-        setTaskCount(data.length);
-      } catch (error) {
-        console.log("error : setTodoCount",error);
+      if (isLoggedIn) {
+        try {
+          const response = await axios.post(`/api/v1/users/todos`);
+          const data = response.data.data.todos;
+          setTaskCount(data.length);
+        } catch (error) {
+          console.log("Error: setTodoCount", error);
+        }
       }
     };
     setTodoCount();
-  }, [tasks]);
+  }, [tasks, isLoggedIn, setTaskCount]);
 
   return (
     <div className="navbar">
