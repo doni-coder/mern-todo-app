@@ -11,7 +11,7 @@ const ContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   
-  const apiUrl = "https://mern-todo-app-backend-three.vercel.app/";
+  const apiUrl = "https://mern-todo-app-backend-aplr.onrender.com/";
 
   useEffect(() => {
     const getLoggedInStatus = async () => {
