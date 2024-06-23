@@ -78,9 +78,7 @@ const loginUser = asyncHandler(async (req, res, next) => {
 
   const options = {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production', // Only secure in production
-    sameSite: 'Lax',
-    domain: 'mern-todo-app-frontend-i78y.onrender.com' // Ensure this matches your frontend domain
+    secure: true,
   };
 
   return res
