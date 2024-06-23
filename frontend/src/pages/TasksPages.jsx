@@ -18,6 +18,7 @@ function TasksPages() {
           `/api/v1/users/todos`
         );
         const data = response.data;
+        console.log(data);
         setTasks(data.data.todos || []);
         setIsLoading(false);
       } catch (error) {
