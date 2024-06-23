@@ -18,7 +18,7 @@ function Login() {
     setIsLoading(true);
     try {
       const response = await axios.post("/api/v1/users/login", formData,{withCredentials: true});
-      console.log(response.data);
+      console.log("Response data:", response.data);
       setIsLoggedIn(true);
       navigate("/");
     } catch (error) {
