@@ -15,9 +15,9 @@ function TasksPages() {
       try {
         setIsLoading(true);
         const response = await axios.post("/api/v1/users/todos");
-        const data = response.data;
+        const data = response.data.data.todos;
         console.log(data);
-        setTasks(data.data.todos || []);
+        setTasks(data || []);
         setIsLoading(false);
       } catch (error) {
         console.error("Failed to fetch tasks:", error);
@@ -27,6 +27,7 @@ function TasksPages() {
 
     getResponse();
   }, []);
+  
   return isLoading ? (
     <Spinner />
   ) : isLoggedIn ? (
