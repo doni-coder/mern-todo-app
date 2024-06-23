@@ -10,17 +10,17 @@ const ContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  
-  // const apiUrl = "http://localhost:3000";
 
   useEffect(() => {
     const getLoggedInStatus = async () => {
       try {
-        const response = await axios.post(`/api/v1/users/status`);
-        console.log("is loggedin",response.data);
-        const data = response.data;
-        setIsLoggedIn(data.data.loggedIn);
-        console.log(isLoggedIn);
+        const response = await axios
+          .post(`/api/v1/users/status`)
+          .then((data) => {
+            console.log("is loggedin", data);
+            setIsLoggedIn(data.loggedIn);
+            console.log(isLoggedIn);
+          });
       } catch (error) {
         console.log("Error : getLoggedInStatus", error);
       }
