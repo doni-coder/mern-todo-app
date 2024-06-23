@@ -19,7 +19,7 @@ function Navbar() {
         const data = response.data.data.todos;
         setTaskCount(data.length);
       } catch (error) {
-        console.log("error : setTodoCount");
+        console.log("error : setTodoCount",error);
       }
     };
     setTodoCount();
