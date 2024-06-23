@@ -6,7 +6,7 @@ import { useTodoContext } from "../context/ContextProvider";
 axios.defaults.withCredentials = true;
 
 function Login() {
-  const { setIsLoggedIn } = useTodoContext();
+  const { setIsLoggedIn,setIsLoading } = useTodoContext();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
