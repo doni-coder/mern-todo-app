@@ -13,12 +13,40 @@ function Login() {
     password: "",
   });
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   try {
+  //     const response = await axios.post("/api/v1/users/login", formData,{withCredentials: true});
+  //     console.log("Response data:", response.data);
+  //     setIsLoggedIn(true);
+  //     navigate("/");
+  //   } catch (error) {
+  //     console.log("Login error", error);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post("/api/v1/users/login", formData,{withCredentials: true});
-      console.log("Response data:", response.data);
+      const response = await fetch("/api/v1/users/login", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include', // This ensures cookies are sent with the request
+        body: JSON.stringify(formData)
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log("Response data:", data);
       setIsLoggedIn(true);
       navigate("/");
     } catch (error) {
@@ -27,6 +55,7 @@ function Login() {
       setIsLoading(false);
     }
   };
+  
 
   const handleOnChange = (e) => {
     setFormData({
