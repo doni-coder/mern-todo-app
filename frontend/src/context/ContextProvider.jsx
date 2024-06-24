@@ -33,16 +33,24 @@ const ContextProvider = ({ children }) => {
     const getLoggedInStatus = async () => {
       try {
         const response = await fetch("/api/v1/users/status", {
-          method: "POST",
-          credentials: "include", // This ensures cookies are sent with the request
+          method: 'POST',
+          credentials: 'include', // This ensures cookies are sent with the request
           headers: {
-            "Content-Type": "application/json",
-          },
+            'Content-Type': 'application/json'
+          }
         });
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         const data = await response.json();
+
+        // Check if data is empty or undefined
+        if (!data || Object.keys(data).length === 0) {
+          throw new Error('Empty response or invalid JSON');
+        }
+
         console.log("isloggedin", data);
         setIsLoggedIn(data.loggedIn);
         console.log("LoggedIn status:", data.loggedIn);
