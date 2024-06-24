@@ -18,7 +18,7 @@ const ContextProvider = ({ children }) => {
         const response = await axios.post("/api/v1/users/status");
         const data = response.data;
         console.log("isloggedin", data);
-        setIsLoggedIn(data.loggedIn);
+        setIsLoggedIn(data.data.loggedIn);
         console.log("LoggedIn status:", data.loggedIn);
       } catch (error) {
         console.log("Error: getLoggedInStatus", error);
