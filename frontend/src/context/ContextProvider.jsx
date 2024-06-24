@@ -6,51 +6,17 @@ axios.defaults.withCredentials = true;
 const todoContext = createContext();
 
 const ContextProvider = ({ children }) => {
+  
   const [tasksCount, setTaskCount] = useState(0);
   const [tasks, setTasks] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const getLoggedInStatus = async () => {
-  //     try {
-  //       const response = await axios.post("/api/v1/users/status");
-  //       const data = response.data;
-  //       console.log("isloggedin", data);
-  //       setIsLoggedIn(data.loggedIn);
-  //       console.log("LoggedIn status:", data.loggedIn);
-  //     } catch (error) {
-  //       console.log("Error: getLoggedInStatus", error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-
-  //   getLoggedInStatus();
-  // }, []);
-
   useEffect(() => {
     const getLoggedInStatus = async () => {
       try {
-        const response = await fetch("/api/v1/users/status", {
-          method: 'POST',
-          credentials: 'include', // This ensures cookies are sent with the request
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        // Check if data is empty or undefined
-        if (!data || Object.keys(data).length === 0) {
-          throw new Error('Empty response or invalid JSON');
-        }
-
+        const response = await axios.post("/api/v1/users/status");
+        const data = response.data;
         console.log("isloggedin", data);
         setIsLoggedIn(data.loggedIn);
         console.log("LoggedIn status:", data.loggedIn);
@@ -60,7 +26,6 @@ const ContextProvider = ({ children }) => {
         setIsLoading(false);
       }
     };
-
     getLoggedInStatus();
   }, []);
 

@@ -10,6 +10,7 @@ axios.defaults.withCredentials = true;
 function TasksPages() {
   const { tasks, setTasks, isLoading, setIsLoading, isLoggedIn } =
     useTodoContext();
+
   useEffect(() => {
     const getResponse = async () => {
       try {
@@ -27,7 +28,7 @@ function TasksPages() {
 
     getResponse();
   }, []);
-  
+
   return isLoading ? (
     <Spinner />
   ) : isLoggedIn ? (

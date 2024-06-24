@@ -2,7 +2,7 @@ import { asyncHandler } from "../Utils/asyncHandler.js";
 import { ApiResponse } from "../Utils/ApiResponse.js";
 import { ApiError } from "../Utils/ApiError.js";
 import { User } from "../Models/user.model.js";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
 const registerUser = asyncHandler(async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -78,14 +78,12 @@ const loginUser = asyncHandler(async (req, res, next) => {
 
   const options = {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'None'
+    secure: true,
   };
 
-  console.log("NOde env :",process.env.NODE_ENV);
-  console.log('Setting cookies with options:', options);
-  console.log('Refresh Token:', refreshToken);
-  console.log('Access Token:', accessToken);
+  console.log("Setting cookies with options:", options);
+  console.log("Refresh Token:", refreshToken);
+  console.log("Access Token:", accessToken);
 
   return res
     .status(200)
@@ -149,18 +147,24 @@ const getUserTodo = asyncHandler(async (req, res, next) => {
 
 // a end point to know user is logged in or not
 
-const isLoggedIn = asyncHandler(async (req,res)=>{
+const isLoggedIn = asyncHandler(async (req, res) => {
   const token = req.cookies["accessToken"];
   if (!token) {
-    return res.status(401).json(new ApiResponse(200,{loggedIn:false},"not loggedin"))
+    return res
+      .status(401)
+      .json(new ApiResponse(200, { loggedIn: false }, "not loggedin"));
   }
 
   try {
-    jwt.verify(token,process.env.ACCESS_TOKEN_SECRET)
-    res.status(200).json(new ApiResponse(200,{loggedIn:true},"user logged in"))
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    res
+      .status(200)
+      .json(new ApiResponse(200, { loggedIn: true }, "user logged in"));
   } catch (error) {
-    return res.status(401).json(new ApiResponse(200,{loggedIn:false},"not loggedin"))
+    return res
+      .status(401)
+      .json(new ApiResponse(200, { loggedIn: false }, "not loggedin"));
   }
-})
+});
 
-export { registerUser, loginUser, logoutUser,getUserTodo,isLoggedIn };
+export { registerUser, loginUser, logoutUser, getUserTodo, isLoggedIn };

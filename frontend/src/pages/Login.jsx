@@ -6,47 +6,21 @@ import { useTodoContext } from "../context/ContextProvider";
 axios.defaults.withCredentials = true;
 
 function Login() {
-  const { setIsLoggedIn,setIsLoading } = useTodoContext();
+  const { setIsLoggedIn, setIsLoading } = useTodoContext();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-  //   try {
-  //     const response = await axios.post("/api/v1/users/login", formData,{withCredentials: true});
-  //     console.log("Response data:", response.data);
-  //     setIsLoggedIn(true);
-  //     navigate("/");
-  //   } catch (error) {
-  //     console.log("Login error", error);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await fetch("/api/v1/users/login", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        credentials: 'include', // This ensures cookies are sent with the request
-        body: JSON.stringify(formData)
+      const response = await axios.post("/api/v1/users/login", formData, {
+        withCredentials: true,
       });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      console.log("Response data:", data);
+      console.log("Response data:", response.data);
       setIsLoggedIn(true);
       navigate("/");
     } catch (error) {
@@ -55,7 +29,6 @@ function Login() {
       setIsLoading(false);
     }
   };
-  
 
   const handleOnChange = (e) => {
     setFormData({
@@ -89,7 +62,7 @@ function Login() {
           <button type="submit">login</button>
         </form>
         <p>
-          If don't have account then {" "}
+          If don't have account then{" "}
           <span>
             <Link to="/signup"> create account</Link>
           </span>
