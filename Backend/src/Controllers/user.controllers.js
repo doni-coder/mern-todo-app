@@ -83,6 +83,9 @@ const loginUser = asyncHandler(async (req, res, next) => {
   };
 
   console.log("NOde env :",process.env.NODE_ENV);
+  console.log('Setting cookies with options:', options);
+  console.log('Refresh Token:', refreshToken);
+  console.log('Access Token:', accessToken);
 
   return res
     .status(200)
