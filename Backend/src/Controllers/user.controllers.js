@@ -82,6 +82,8 @@ const loginUser = asyncHandler(async (req, res, next) => {
     sameSite: 'None'
   };
 
+  console.log("NOde env :",process.env.NODE_ENV);
+
   return res
     .status(200)
     .cookie("refreshToken", refreshToken, options)
