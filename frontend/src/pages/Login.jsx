@@ -6,7 +6,7 @@ import { useTodoContext } from "../context/ContextProvider";
 axios.defaults.withCredentials = true;
 
 function Login() {
-  const { setIsLoggedIn, setIsLoading,ApiUrl } = useTodoContext();
+  const { setIsLoggedIn, setIsLoading } = useTodoContext();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -17,7 +17,7 @@ function Login() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post(`${ApiUrl}/api/v1/users/login`, formData, {
+      const response = await axios.post(`https://mern-todo-app-backend-ppfx.onrender.com/api/v1/users/login`, formData, {
         withCredentials: true,
       });
       console.log("Response data:", response.data);

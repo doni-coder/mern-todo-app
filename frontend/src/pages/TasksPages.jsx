@@ -8,14 +8,14 @@ import Spinner from "../components/Spinner";
 axios.defaults.withCredentials = true;
 
 function TasksPages() {
-  const { tasks, setTasks, isLoading, setIsLoading, isLoggedIn,ApiUrl } =
+  const { tasks, setTasks, isLoading, setIsLoading, isLoggedIn } =
     useTodoContext();
 
   useEffect(() => {
     const getResponse = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.post(`${ApiUrl}/api/v1/users/todos`);
+        const response = await axios.post(`https://mern-todo-app-backend-ppfx.onrender.com/api/v1/users/todos`);
         const data = response.data.data.todos;
         console.log(data);
         setTasks(data || []);

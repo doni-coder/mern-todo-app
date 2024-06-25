@@ -11,12 +11,11 @@ const ContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const ApiUrl = "https://mern-todo-app-backend-ppfx.onrender.com"
 
   useEffect(() => {
     const getLoggedInStatus = async () => {
       try {
-        const response = await axios.post(`${ApiUrl}/api/v1/users/status`);
+        const response = await axios.post(`https://mern-todo-app-backend-ppfx.onrender.com/api/v1/users/status`);
         const data = response.data;
         console.log("isloggedin", data);
         setIsLoggedIn(data.data.loggedIn);
@@ -41,7 +40,6 @@ const ContextProvider = ({ children }) => {
         setIsLoggedIn,
         isLoading,
         setIsLoading,
-        ApiUrl
       }}
     >
       {children}

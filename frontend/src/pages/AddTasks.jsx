@@ -10,7 +10,7 @@ function AddTasks() {
     description: "",
   });
 
-  const { tasks, setTasks, isLoggedIn,ApiUrl } = useTodoContext();
+  const { tasks, setTasks, isLoggedIn } = useTodoContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ function AddTasks() {
       if (formData.title === "" && formData.description === "") {
         alert("please enter some value");
       } else {
-        const response = await axios.post(`${ApiUrl}/api/v1/todos/newTodo`, formData);
+        const response = await axios.post(`https://mern-todo-app-backend-ppfx.onrender.com/api/v1/todos/newTodo`, formData);
         setTasks([...tasks, response.data.data]);
         alert("task added");
       }

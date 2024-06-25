@@ -7,7 +7,6 @@ axios.defaults.withCredentials = true;
 
 function SignUp() {
   const navigate = useNavigate();
-  const {ApiUrl} = useTodoContext()
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -17,7 +16,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${ApiUrl}/api/v1/users/register`, formData);
+      const response = await axios.post(`https://mern-todo-app-backend-ppfx.onrender.com/api/v1/users/register`, formData);
       console.log(response.data);
       alert("user registered successful");
       navigate("/login");

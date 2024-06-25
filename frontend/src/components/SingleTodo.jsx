@@ -8,7 +8,6 @@ axios.defaults.withCredentials = true;
 function SingleTodo() {
 
   const navigate = useNavigate()
-  const {ApiUrl} = useTodoContext()
 
   let [formData, setFormData] = useState({
     title: "",
@@ -25,7 +24,7 @@ function SingleTodo() {
   };
 
   const { id } = useParams();
-  const url = `${ApiUrl}/api/v1/todos/getTodo`;
+  const url = `https://mern-todo-app-backend-ppfx.onrender.com/api/v1/todos/getTodo`;
 
   useEffect(() => {
     const getResponse = async () => {
@@ -48,14 +47,14 @@ function SingleTodo() {
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    const response = await axios.post(`${ApiUrl}/api/v1/todos/updateTodo/${id}`,formData)
+    const response = await axios.post(`https://mern-todo-app-backend-ppfx.onrender.com/api/v1/todos/updateTodo/${id}`,formData)
     console.log(response.data);
     navigate("/Tasks")
   }
 
 
   const handleDelete = async ()=>{
-    const response = await axios.post(`${ApiUrl}/api/v1/todos/deleteTodo/${id}`)
+    const response = await axios.post(`https://mern-todo-app-backend-ppfx.onrender.com/api/v1/todos/deleteTodo/${id}`)
     console.log(response.data);
     alert("Task deleted")
     navigate('/Tasks')
