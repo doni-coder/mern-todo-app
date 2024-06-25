@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import "../styles/SingleTodo.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { useTodoContext } from "../context/ContextProvider";
 axios.defaults.withCredentials = true;
 
 function SingleTodo() {
 
   const navigate = useNavigate()
+  const {ApiUrl} = useTodoContext()
 
   let [formData, setFormData] = useState({
     title: "",
@@ -23,7 +25,7 @@ function SingleTodo() {
   };
 
   const { id } = useParams();
-  const url = "/api/v1/todos/getTodo";
+  const url = `${ApiUrl}/api/v1/todos/getTodo`;
 
   useEffect(() => {
     const getResponse = async () => {
@@ -46,14 +48,14 @@ function SingleTodo() {
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    const response = await axios.post(`/api/v1/todos/updateTodo/${id}`,formData)
+    const response = await axios.post(`${ApiUrl}/api/v1/todos/updateTodo/${id}`,formData)
     console.log(response.data);
     navigate("/Tasks")
   }
 
 
   const handleDelete = async ()=>{
-    const response = await axios.post(`/api/v1/todos/deleteTodo/${id}`)
+    const response = await axios.post(`${ApiUrl}/api/v1/todos/deleteTodo/${id}`)
     console.log(response.data);
     alert("Task deleted")
     navigate('/Tasks')
