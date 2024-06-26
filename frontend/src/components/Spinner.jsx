@@ -1,11 +1,12 @@
 import React from 'react'
 import { useTodoContext } from '../context/ContextProvider'
+import "../styles/Spinner.css"
 
 function Spinner() {
     const {isLoggedIn} = useTodoContext()
   return isLoggedIn? (
     <div style={{display:"flex",justifyContent:"center",marginTop:"50px"}}>
-      <img style={{width:"40px"}} src="../../public/images/Spinner-3.gif" alt="" />
+      <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
   ):(
     <div style={{marginTop:"50px",textAlign:"center"}}>
