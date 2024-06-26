@@ -5,8 +5,8 @@ import "../styles/Spinner.css"
 function Spinner() {
     const {isLoggedIn} = useTodoContext()
   return isLoggedIn? (
-    <div style={{display:"flex",justifyContent:"center",marginTop:"50px"}}>
-      <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div style={{display:"flex",justifyContent:"center",marginTop:"100px"}}>
+      <div class="loader"></div>
     </div>
   ):(
     <div style={{marginTop:"50px",textAlign:"center"}}>
